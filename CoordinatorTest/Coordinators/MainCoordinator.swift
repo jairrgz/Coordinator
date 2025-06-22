@@ -22,7 +22,11 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Methods
     func start() {
-        
+        /// Llamar al primer flujo de Login
+        let loginCoordinator = LoginCoordinator(nagivationController: nagivationController)
+        childCoordinators.append(loginCoordinator)
+        loginCoordinator.parentCoordinator = self
+        loginCoordinator.start()
     }
     
     
