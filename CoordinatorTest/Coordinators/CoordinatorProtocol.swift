@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     
     var childCoordinators: [Coordinator] { get set }
     var nagivationController: UINavigationController { get set }
-    var parentCoordinator: Coordinator? { get set }
+    var parentCoordinator: MainCoordinator? { get set }
     
     func start()
     

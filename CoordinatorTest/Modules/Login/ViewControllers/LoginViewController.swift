@@ -8,12 +8,23 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    // MARK: - PROPERTIES
     var loginCoordinator: LoginCoordinator?
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.goToDetail()
+        }
 
     }
+    
+    func goToDetail() {
+        loginCoordinator?.navegateToDetail()
+    }
+    
     
 }

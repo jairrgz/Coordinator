@@ -13,7 +13,7 @@ class MainCoordinator: Coordinator {
     // MARK: - PROPERTIES
     var childCoordinators: [any Coordinator] = []
     var nagivationController: UINavigationController
-    var parentCoordinator: (any Coordinator)?
+    var parentCoordinator: MainCoordinator?
     
     // MARK: - Designated Initialyzer
     init(nagivationController: UINavigationController) {
@@ -29,7 +29,18 @@ class MainCoordinator: Coordinator {
         loginCoordinator.start()
     }
     
+    func removeChilde(coordinator: Coordinator) {
+        for(index, coord) in childCoordinators.enumerated() where coord === coordinator {
+            childCoordinators.remove(at: index)
+        }
+    }
     
+    func startFeed() {
+        let feedCoordinator = FeedCoordinator(nagivationController: nagivationController)
+        childCoordinators.append(feedCoordinator)
+        feedCoordinator.parentCoordinator = self
+        feedCoordinator.start()
+    }
     
     
 }
