@@ -42,5 +42,11 @@ class MainCoordinator: Coordinator {
         feedCoordinator.start()
     }
     
+    func startTabBarFlow() {
+        let tabBarCoordinator = CustomTabBarCoordinator(nagivationController: nagivationController)
+        childCoordinators.append(tabBarCoordinator)
+        tabBarCoordinator.parentCoordinator = self
+        tabBarCoordinator.start()
+    }
     
 }

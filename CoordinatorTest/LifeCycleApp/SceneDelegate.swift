@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
-        mainCoordinator.start()
+        mainCoordinator.startTabBarFlow()
     }
 
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class CustomTabBarController: UITabBarController {
     
+    var coordinator: CustomTabBarCoordinator?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

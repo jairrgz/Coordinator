@@ -15,7 +15,7 @@ class CustomTabBarCoordinator: Coordinator {
     var parentCoordinator: MainCoordinator?
     var childCoordinators: [Coordinator] = []
     
-    let customTabarrControoller = CustomTabBarController()
+    let customTabarrController = CustomTabBarController()
     
     
     // MARK: - Designated Initializer
@@ -25,6 +25,28 @@ class CustomTabBarCoordinator: Coordinator {
     
     
     func start() {
+        customTabarrController.coordinator = self
+        // LOGIN
+        let loginNavigationController = UINavigationController()
+        loginNavigationController.tabBarItem = UITabBarItem(title: "Login", image: UIImage(systemName: "plus"), selectedImage: UIImage(systemName: "plus"))
+        
+        let loginCoordinator = LoginCoordinator(nagivationController: loginNavigationController)
+        childCoordinators.append(loginCoordinator)
+        
+        // FEED
+        let feedNavigationController = UINavigationController()
+        feedNavigationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "minus"), selectedImage: UIImage(systemName: "minus"))
+        
+        let feedCoordinator = FeedCoordinator(nagivationController: feedNavigationController)
+        childCoordinators.append(feedCoordinator)
+        
+        customTabarrController.viewControllers = [loginNavigationController, feedNavigationController]
+        nagivationController.pushViewController(customTabarrController, animated: false)
+        
+        // Start de c/u de los coordinators
+        loginCoordinator.start()
+        feedCoordinator.start()
         
     }
 }
+
